@@ -29,7 +29,7 @@ namespace BullsCows
             do
             {
                 steps++;
-                var hypothesis = Input(">>>");
+                var hypothesis = IOHelper.Input(">>>");
                 if (string.IsNullOrEmpty(hypothesis))
                     break;
                 if (Verificate(hypothesis, out var error))
@@ -43,11 +43,11 @@ namespace BullsCows
                     if (bulls == 4)
                         Console.WriteLine("You WIN!!!");
                     else
-                        Print($"{steps}:  Bull:{bulls} Cows:{cows}");
+                        IOHelper.Print($"{steps}:  Bull:{bulls} Cows:{cows}");
                 }
                 else
                 {
-                    Print(error);
+                    IOHelper.Print(error);
                 }
 
             } while (bulls < 4);
@@ -67,22 +67,13 @@ namespace BullsCows
             return error == "";
         }
 
-        private string Input(string hint = "")
-        {
-            Console.Write(hint);
-            return Console.ReadLine();
-        }
-
-        private static void Print(string? str)
-        {
-            Console.WriteLine(str);
-        }
+        
 
         public void Run()
         {
             Init();
             Loop();
-            Print("Заходи ещё!");
+            IOHelper.Print("Заходи ещё!");
 
         }
     }
