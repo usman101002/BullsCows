@@ -55,10 +55,34 @@ namespace BullsCows
             UserThinking(this.nameUser2);
         }
 
+        private string ChooseWhoStart()
+        {
+            string res;
+            Random rnd = new Random();
+            int ranomNumber = rnd.Next(0, 2);
+            if (ranomNumber == 0)
+            {
+                res = nameUser1;
+            }
+            else
+            {
+                res = nameUser2;
+            }
+
+            IOHelper.Print($"Игрок {res} начинает игру!");
+            return res;
+        }
+
+        private void Compete(string firstPlayer)
+        {
+            IOHelper.Print($"Игрок {firstPlayer}, делайте ваш ход");
+        }
+
         public void Run()
         {
             Init();
             ThinkOfANumber();
+            var firstPlayer = ChooseWhoStart();
 
         }
 
